@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<style>
+	html body {
+	  background-image: url("{{ url_for('static', filename='images/crop_background.jpg') }}");
+	}
+  </style>
+<section class="blog py-5">
+	<div class="container py-md-5">
+		<div class="row blog-grids justify-content-center">
+			<div class="col-lg-4 col-md-6 blog-middle mb-lg-0 mb-sm-5 pb-lg-0 pb-md-5">
+				<img src="{{ url_for('static', filename='images/farm_background.jpg') }}" class="img-fluid" alt="" />
+				<a href="{{ url_for('crop_recommend') }}">
+					<div class="blog-info text-center">
+					<h4>Crop Recommendation</h4>
+
+					<p class="mt-2"> Recommendation about the type of crops to be cultivated which is best suited
+						for the respective conditions for cities in Nigeria</p>
+				</div>
+			</a>
+		</div>
+		<!-- add more divs here -->
+	</div>
+</div>
+</section> 
+
+
+</html>
+
+{% endblock %}

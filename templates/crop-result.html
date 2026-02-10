@@ -1,0 +1,26 @@
+{% extends 'layout.html' %} {% block body %}
+
+<style>
+  
+  html body {
+    background-image: url("{{ url_for('static', filename='images/crop_background.jpg') }}");
+  }
+  .mt-0 {
+  margin-top: 50 !important;
+}
+</style>
+
+
+<div class="container py-2 mx-auto my-50 h-10 " style="margin: 12rem;">
+  <div class="row">
+      <div class="col-sm py-2 py-md-3">
+          <div class="card card-body" style="justify-content: center;">
+               <h1 class="text-center"><b>You should grow <i>{{ prediction }} </i>in your farm</b></h1>
+               <img class="text-center" src="{{output_image_path}}"/>
+               <p class="text-center"> {{description}} </p>
+               <h3 class="text-center"><b>The Raining Season Starts  <i>{{ seasonstart }} </i> and ends <i>{{ seasonend }} </i>in your region</b></h3>
+          </div>
+      </div>
+  </div>
+</div>
+{% endblock %}

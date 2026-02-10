@@ -1,0 +1,181 @@
+{% extends 'layout.html' %} {% block body %}
+
+<style>
+  html body {
+    background-image: url("{{ url_for('static', filename='images/crop_background.jpg') }}");
+  }
+</style>
+<!--Form Section-->
+<br /><br />
+<h2 style="text-align: center; margin: 0px; color: black">
+  <b>Find out the most suitable crop to grow in your farm</b>
+</h2>
+<br />
+
+<div
+  style="
+    width: 350px;
+    height: 50rem;
+    margin: 0px auto;
+    color: black;
+    border-radius: 25px;
+    padding: 10px 10px;
+  "
+>
+  <form method="POST" action="{{ url_for('crop_prediction') }}">
+    <div class="form-group">
+      <label for="Nitrogen" style="font-size: 17px"><b>Nitrogen</b></label>
+      <input
+        type="number"
+        class="form-control"
+        id="Nitrogen"
+        name="nitrogen"
+        placeholder="Enter the value (example:50)"
+        style="font-weight: bold"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="Phosphorous" style="font-size: 17px"
+        ><b>Phosphorous</b></label
+      >
+      <input
+        type="number"
+        class="form-control"
+        id="Phosphorous"
+        name="phosphorous"
+        placeholder="Enter the value (example:50)"
+        style="font-weight: bold"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="Pottasium" style="font-size: 17px"><b>Pottasium</b></label>
+      <input
+        type="number"
+        class="form-control"
+        id="Pottasium"
+        name="pottasium"
+        placeholder="Enter the value (example:50)"
+        style="font-weight: bold"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="ph" style="font-size: 17px"><b>ph level</b></label>
+      <input
+        type="number"
+        step="0.01"
+        class="form-control"
+        id="ph"
+        name="ph"
+        placeholder="Enter the value"
+        style="font-weight: bold"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="State" style="font-size: 17px"><b>State</b></label>
+       <select class="form-control" id="inputState" name="stt" style="font-weight: bold; color: black"
+      required>
+      <option value="SelectState">-- Select State --</option>
+      <option value="Abia">ABIA</option>
+      <option value="Adamawa">ADAMAWA</option>
+      <option value="AkwaIbom">AKWA IBOM</option>
+      <option value="Anambra">ANAMBRA</option>
+      <option value="Bauchi">BAUCHI</option>
+      <option value="Bayelsa">BAYELSA</option>
+      <option value="Benue">BENUE</option>
+      <option value="Borno">BORNO</option>
+      <option value="CrossRiver">CROSS RIVER</option>
+      <option value="Delta">DELTA</option>
+      <option value="Ebonyi">EBONYI</option>
+      <option value="Edo">EDO</option>
+      <option value="Ekiti">EKITI</option>
+      <option value="Enugu">ENUGU</option>
+      <option value="Fct">FEDERAL CAPITAL TERRITORY ABUJA</option>
+      <option value="Gombe">GOMBE</option>
+      <option value="Imo">IMO</option>
+      <option value="Jigawa">JIGAWA</option>
+      <option value="Kaduna">KADUNA</option>
+      <option value="Kano">KANO</option>
+      <option value="Kastina">KASTINA</option>
+      <option value="Kebbi">KEBBI</option>
+      <option value="Kogi">KOGI</option>
+      <option value="Kwara">KWARA</option>
+      <option value="Lagos">LAGOS</option>
+      <option value="Nasarawa">NASARAWA</option>
+      <option value="Niger">NIGER</option>
+      <option value="Ogun">OGUN</option>
+      <option value="Ondo">ONDO</option>
+      <option value="Osun">OSUN</option>
+      <option value="Oyo">OYO</option>
+      <option value="Plateau">PLATEAU</option>
+      <option value="Rivers">RIVERS</option>
+      <option value="Sokoto">SOKOTO</option>
+      <option value="Taraba">TARABA</option>
+      <option value="Yobe">YOBE</option>
+      <option value="Zamfara">ZAMFARA</option>
+      </select>
+      <br />
+      <label for="City" style="font-size: 17px"><b>City</b></label>
+      <select class="form-control" id="inputCity" name="city" required>
+        <option value="">-- Select one --</option>
+      </select>
+      
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <button
+        type="submit"
+        class="btn btn-info"
+        style="
+          color: black;
+          font-weight: bold;
+          width: 130px;
+          height: 50px;
+          border-radius: 12px;
+          font-size: 21px;
+        "
+      >
+        Predict
+      </button>
+    </div>
+  </form>
+</div>
+<script
+            src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"
+          ></script>
+          <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"
+          ></script>
+          <script
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+            integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+            crossorigin="anonymous"
+          ></script>
+
+          <script
+            src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"
+          ></script>
+          <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"
+          ></script>
+          <script
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+            integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+            crossorigin="anonymous"
+          ></script>
+          <script src="{{ url_for('static', filename='scripts/cities.js') }}"></script>
+<!-- Form section -->
+
+{% endblock %}
